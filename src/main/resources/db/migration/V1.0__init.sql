@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS visit
+(
+    id     BIGSERIAL PRIMARY KEY,
+    amount BIGINT NOT NULL
+);

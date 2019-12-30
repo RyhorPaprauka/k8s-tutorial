@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visit-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: visit
+          image: grinman/multi-visit
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PGURL
+              value: jdbc:postgresql://postgres-cluster-ip-service:5432/visitDB
+            - name: PGUSER
+              value: ryhor
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: POSTGRES_PASSWORD
