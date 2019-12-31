@@ -3,7 +3,7 @@ services:
   - docker
 env:
   global:
-    - SHA=$(get rev-parse HEAD)
+    - SHA=$(git rev-parse HEAD)
     - CLOUDSDK_CORE_DISABLE_PROMTS=1
 cache:
   directories:
