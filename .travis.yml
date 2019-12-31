@@ -22,6 +22,10 @@ before_install:
   - docker pull openjdk:8-jdk-alpine
 script:
   - mvn clean package
+after_success:
+  - docker build -t grinman/multi-visit:$SHA .
+  - echo  "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker push grinman/multi-visit:$SHA
 deploy:
   provider: script
   script: bash ./deploy.sh
