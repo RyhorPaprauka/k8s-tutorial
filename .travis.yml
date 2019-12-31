@@ -21,7 +21,6 @@ before_install:
   - chmod +x mvnw
   - docker pull openjdk:8-jdk-alpine
 script:
-  - mvn test
   - mvn clean package
 deploy:
   provider: script
