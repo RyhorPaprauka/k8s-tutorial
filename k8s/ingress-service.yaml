@@ -9,7 +9,7 @@ spec:
   rules:
     - http:
         paths:
-          - backend:
+          - path: /api/
+            backend:
               serviceName: visit-cluster-ip-service
               servicePort: 8080
-            path: /api
